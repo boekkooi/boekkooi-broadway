@@ -1,0 +1,9 @@
+services:
+  broadway.uuid.generator:
+    class: Boekkooi\Broadway\UuidGenerator\Rfc4122\Version4Generator
+
+  broadway.saga.state.state_manager:
+    class: Boekkooi\Broadway\Saga\State\StateManager
+    arguments:
+      - @broadway.saga.state.repository
+      - @broadway.uuid.generator
