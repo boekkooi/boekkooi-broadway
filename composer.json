@@ -28,7 +28,10 @@
   "autoload-dev": {
     "psr-4": {
       "Tests\\Boekkooi\\Broadway\\": "tests/"
-    }
+    },
+    "files": [
+      "tests/Fixtures/Event/EventWithoutNamespace.php"
+    ]
   },
   "minimum-stability": "dev"
 }
