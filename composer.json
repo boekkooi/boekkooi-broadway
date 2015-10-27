@@ -10,7 +10,7 @@
   ],
   "require": {
     "php": ">=5.5",
-    "broadway/broadway": "^0.7, >= 0.7.1",
+    "broadway/broadway": "^0.8",
     "league/tactician": "^0.6, >= 0.6.1",
     "symfony/serializer": "~2.3"
   },
