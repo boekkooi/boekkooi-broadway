@@ -1,0 +1,22 @@
+language: php
+
+php: [5.5, 5.6, 7.0, hhvm]
+
+sudo: false
+
+matrix:
+  include:
+  - { php: 5.5,  env: "COMPOSER_FLAGS='--prefer-stable --prefer-lowest'"}
+  - { php: 5.5,  env: "SYMFONY_VERSION=2.3.*" }
+  - { php: 5.6,  env: "SYMFONY_VERSION=2.7.*" }
+  allow_failures:
+  - { php: hhvm }
+  - { php: 7.0 }
+
+before_script:
+  # Update composer and deps
+  - sh -c 'if [ "${SYMFONY_VERSION}" != "" ]; then composer require --no-update symfony/serializer=${SYMFONY_VERSION}; fi;'
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
+
+script:
+  - vendor/bin/phpunit
