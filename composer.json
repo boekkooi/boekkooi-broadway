@@ -15,7 +15,7 @@
     "symfony/serializer": "~2.3"
   },
   "require-dev": {
-    "symfony/framework-bundle": "~2.5",
+    "symfony/framework-bundle": "~2.3, >= 2.3.24",
 
     "phpunit/phpunit": "~4.8",
     "matthiasnoback/symfony-config-test": "~1.3",
