@@ -31,4 +31,3 @@ class StateManager implements StateManagerInterface
         return new State($this->generator->generate());
     }
 }
-

@@ -164,7 +164,7 @@ class EventClassChecker extends AbstractChecker
             $doc = new DocBlock($token->getContent());
             $annotations = $doc->getAnnotationsOfType('var');
 
-            if(count($annotations) === 0) {
+            if (count($annotations) === 0) {
                 $tokens->reportAt(
                     $i,
                     new Message(E_ERROR, 'check_class_property_phpdoc_must_have_var', [
@@ -260,7 +260,7 @@ class EventClassChecker extends AbstractChecker
 
         // Report unused arguments
         $unusedArguments = array_diff(
-            array_map(function($info) { return $info['token']->getContent(); }, $functionArguments),
+            array_map(function ($info) { return $info['token']->getContent(); }, $functionArguments),
             $usedVariables
         );
 

@@ -81,7 +81,7 @@ final class TokensHelper
             $token = $tokens[$tokenIndex];
 
             // name
-            if ($token->isGivenKind(T_STRING) ){
+            if ($token->isGivenKind(T_STRING)) {
                 if (is_array($attributes[$current])) {
                     $attributes[$current][] = $token->getContent();
                 } else {
@@ -108,8 +108,6 @@ final class TokensHelper
         }
 
         return $attributes;
-
-
     }
 
     /**

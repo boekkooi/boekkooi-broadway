@@ -2,7 +2,6 @@
 namespace Boekkooi\Broadway\Serializer;
 
 use Assert\Assertion as Assert;
-
 use Broadway\Serializer\SerializationException;
 use Broadway\Serializer\SerializerInterface as BroadwaySerializerInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;

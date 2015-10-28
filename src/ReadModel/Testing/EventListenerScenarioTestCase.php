@@ -35,12 +35,12 @@ abstract class EventListenerScenarioTestCase extends \PHPUnit_Framework_TestCase
      *
      * @return ObjectRepository
      */
-    protected abstract function getRepository();
+    abstract protected function getRepository();
 
     /**
      * Returns the event listener to test.
      *
      * @return EventListenerInterface
      */
-    protected abstract function createEventListener();
+    abstract protected function createEventListener();
 }

@@ -32,7 +32,7 @@ class Configuration implements ConfigurationInterface
                             ->addDefaultsIfNotSet()
                             ->beforeNormalization()
                                 ->ifString()
-                                ->then(function($value) {
+                                ->then(function ($value) {
                                     return [ 'payload' => $value, 'metadata' => $value ];
                                 })
                             ->end()

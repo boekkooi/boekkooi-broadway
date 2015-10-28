@@ -83,7 +83,6 @@ class Scenario
      */
     public function when($event, DateTime $occurredOn = null)
     {
-
         $this->eventListener->handle($this->createDomainMessageForEvent($event, $occurredOn));
 
         return $this;
