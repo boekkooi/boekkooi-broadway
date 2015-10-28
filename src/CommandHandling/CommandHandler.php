@@ -1,5 +1,5 @@
 <?php
-namespace Boekkooi\Broadway;
+namespace Boekkooi\Broadway\CommandHandling;
 
 use Broadway\CommandHandling\CommandHandlerInterface;
 use League\Tactician\CommandBus;

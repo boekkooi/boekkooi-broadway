@@ -1,5 +1,5 @@
 <?php
-namespace Boekkooi\Broadway\Testing;
+namespace Boekkooi\Broadway\CommandHandling\Testing;
 
 use Broadway\CommandHandling\Testing\Scenario;
 use Broadway\EventHandling\EventBusInterface;
