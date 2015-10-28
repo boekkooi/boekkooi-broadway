@@ -41,5 +41,10 @@
       "tests/Fixtures/Event/EventWithoutNamespace.php"
     ]
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1-dev"
+    }
+  }
 }
