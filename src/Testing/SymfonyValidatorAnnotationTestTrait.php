@@ -2,14 +2,15 @@
 namespace Boekkooi\Broadway\Testing;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
-use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Validation;
 
 trait SymfonyValidatorAnnotationTestTrait
 {
+    private static $registered = false;
+
     protected static function registerValidatorAnnotations($force = false)
     {
-        if (!$force && AnnotationRegistry::loadAnnotationClass(NotNull::class) === true) {
+        if (!$force && self::$registered) {
             return;
         }
 
@@ -27,12 +28,14 @@ trait SymfonyValidatorAnnotationTestTrait
                 'Symfony\\Component\\Validator\\Constraints',
                 substr($filePath, 0, -strlen($psr0Path))
             );
+
+            self::$registered = true;
             return;
         }
 
         // Custom PSR-4 loader
         $constraintsDir = dirname($filePath) . '/Constraints/';
-        AnnotationRegistry::registerLoader(function ($class) use ($constraintsDir) {
+        AnnotationRegistry::registerLoader(function($class) use ($constraintsDir) {
             $ns = 'Symfony\Component\Validator\Constraints\\';
             if (strpos($class, $ns) !== 0) {
                 return;
@@ -45,5 +48,7 @@ trait SymfonyValidatorAnnotationTestTrait
                 return true;
             }
         });
+
+        self::$registered = true;
     }
 }
