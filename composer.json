@@ -15,7 +15,10 @@
     "symfony/serializer": "~2.3"
   },
   "require-dev": {
-    "symfony/framework-bundle": "~2.3, >= 2.3.24",
+    "symfony/framework-bundle": "~2.3",
+    "symfony/dependency-injection": "~2.3, >= 2.3.24",
+    "symfony/validator": "~2.5",
+
     "doctrine/orm": "~2.1",
 
     "phpunit/phpunit": "~4.8",
@@ -26,7 +29,8 @@
   },
   "suggest": {
     "boekkooi/php-cs-fixer-checker": "For extra code style checks",
-    "doctrine/orm": "For using doctrine with read model testing"
+    "doctrine/orm": "For using doctrine with read model testing",
+    "symfony/validator": "For symfony constraint testing"
   },
   "autoload": {
     "psr-4": {
