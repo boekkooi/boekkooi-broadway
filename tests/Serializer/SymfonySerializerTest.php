@@ -22,6 +22,10 @@ class SymfonySerializerTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        if (!interface_exists(NormalizerInterface::class)) {
+            self::markTestSkipped('"symfony/validator" is not installed');
+        }
+
         $this->normalizerMock = $this->getMock(NormalizerInterface::class);
         $this->denormalizerMock = $this->getMock(DenormalizerInterface::class);
 

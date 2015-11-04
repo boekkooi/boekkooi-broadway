@@ -35,7 +35,7 @@ trait SymfonyValidatorAnnotationTestTrait
 
         // Custom PSR-4 loader
         $constraintsDir = dirname($filePath) . '/Constraints/';
-        AnnotationRegistry::registerLoader(function($class) use ($constraintsDir) {
+        AnnotationRegistry::registerLoader(function ($class) use ($constraintsDir) {
             $ns = 'Symfony\Component\Validator\Constraints\\';
             if (strpos($class, $ns) !== 0) {
                 return;

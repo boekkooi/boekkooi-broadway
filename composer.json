@@ -17,9 +17,11 @@
   "require-dev": {
     "symfony/framework-bundle": "~2.3",
     "symfony/dependency-injection": "~2.3, >= 2.3.24",
-    "symfony/validator": "~2.5",
+    "symfony/validator": "~2.7",
 
     "doctrine/orm": "~2.1",
+
+    "giggsey/libphonenumber-for-php": "~7.0",
 
     "phpunit/phpunit": "~4.8",
     "matthiasnoback/symfony-config-test": "~1.3",
