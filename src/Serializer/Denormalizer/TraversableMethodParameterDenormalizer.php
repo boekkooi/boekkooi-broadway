@@ -1,23 +1,38 @@
 <?php
 namespace Boekkooi\Broadway\Serializer\Denormalizer;
 
+use Symfony\Component\Serializer\Exception\LogicException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\SerializerAwareInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
-class TraversableMethodParameterDenormalizer implements DenormalizerInterface
+class TraversableMethodParameterDenormalizer implements DenormalizerInterface, SerializerAwareInterface
 {
     /**
-     * @var DenormalizerInterface
+     * @var DenormalizerInterface|null
      */
     private $denormalizer;
+    /**
+     * @var SerializerInterface|null
+     */
+    private $serializer;
 
     /**
      * @var array
      */
     protected $classMethodParameterMap = [];
 
-    public function __construct(DenormalizerInterface $itemDenormalizer)
+    public function __construct(DenormalizerInterface $itemDenormalizer = null)
     {
         $this->denormalizer = $itemDenormalizer;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setSerializer(SerializerInterface $serializer)
+    {
+        $this->serializer = $serializer;
     }
 
     public function registerMethodParameter($className, $methodName, $parameterName, $parameterItemClassName)
@@ -32,11 +47,16 @@ class TraversableMethodParameterDenormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $type, $format = null, array $context = [])
     {
+        $denormalizer = $this->denormalizer ?: $this->serializer;
+        if (!$denormalizer instanceof DenormalizerInterface) {
+            throw new LogicException('Cannot denormalize because injected serializer is not a denormalizer');
+        }
+
         $childClass = $this->classMethodParameterMap[$type];
 
         $res = [];
         foreach ($data as $child) {
-            $res[] = $this->denormalizer->denormalize($child, $childClass, $format, $context);
+            $res[] = $denormalizer->denormalize($child, $childClass, $format, $context);
         }
         return $res;
     }
