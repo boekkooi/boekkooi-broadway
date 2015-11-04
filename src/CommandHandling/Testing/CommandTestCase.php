@@ -95,7 +95,7 @@ abstract class CommandTestCase extends \PHPUnit_Framework_TestCase
      *
      * @return array
      */
-    abstract protected function provideCommandClassInstances();
+    abstract public function provideCommandClassInstances();
 
     /**
      * A phpunit dataProvider giving a property and a set constraints that it must have.
@@ -107,5 +107,5 @@ abstract class CommandTestCase extends \PHPUnit_Framework_TestCase
      *
      * @return array
      */
-    abstract protected function providePropertyConstraints();
+    abstract public function providePropertyConstraints();
 }
