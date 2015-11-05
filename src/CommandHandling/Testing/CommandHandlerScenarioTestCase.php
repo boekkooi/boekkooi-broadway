@@ -1,6 +1,8 @@
 <?php
 namespace Boekkooi\Broadway\CommandHandling\Testing;
 
+use Boekkooi\Broadway\UuidGenerator\Rfc4122\Version4Generator;
+use Boekkooi\Broadway\UuidGenerator\UuidGeneratorInterface;
 use Broadway\CommandHandling\Testing\Scenario;
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventHandling\SimpleEventBus;
@@ -9,8 +11,6 @@ use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStoreInterface;
 use Broadway\EventStore\InMemoryEventStore;
 use Broadway\EventStore\TraceableEventStore;
-use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-use Broadway\UuidGenerator\UuidGeneratorInterface;
 use League\Tactician\Handler\CommandHandlerMiddleware;
 use League\Tactician\Handler\CommandNameExtractor\ClassNameExtractor;
 use League\Tactician\Handler\Locator\CallableLocator;
