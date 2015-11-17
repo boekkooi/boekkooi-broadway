@@ -45,7 +45,7 @@ trait SymfonyValidatorTestTrait
      * @param string $property
      * @return \Symfony\Component\Validator\Constraint[]
      */
-    protected function getClassPropertyConstraints(ClassMetadataInterface $classMetadata, $property)
+    protected static function getClassPropertyConstraints(ClassMetadataInterface $classMetadata, $property)
     {
         if (!$classMetadata->hasPropertyMetadata($property)) {
             return [];
