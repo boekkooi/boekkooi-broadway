@@ -6,9 +6,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class JsonSerializableNormalizer implements NormalizerInterface
 {
     /**
-     * {@inheritdoc}
-     *
-     * @param \JsonSerializable $object
+     * @inheritdoc
      */
     public function normalize($object, $format = null, array $context = array())
     {
@@ -20,6 +18,6 @@ class JsonSerializableNormalizer implements NormalizerInterface
      */
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && $data instanceof \JsonSerializable;
+        return $data instanceof \JsonSerializable;
     }
 }

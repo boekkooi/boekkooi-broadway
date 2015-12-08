@@ -12,9 +12,7 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface
     const NORMALIZE_FORMAT = 'Y-m-d\TH:i:s.uP';
 
     /**
-     * {@inheritdoc}
-     *
-     * @param \DateTimeInterface $object
+     * @inheritdoc
      */
     public function normalize($object, $format = null, array $context = [])
     {
@@ -26,9 +24,7 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface
      */
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && (
-            $data instanceof \DateTimeInterface
-        );
+        return $data instanceof \DateTimeInterface;
     }
 
     /**

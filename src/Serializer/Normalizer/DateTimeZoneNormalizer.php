@@ -10,8 +10,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class DateTimeZoneNormalizer implements NormalizerInterface, DenormalizerInterface
 {
     /**
-     * {@inheritdoc}
-     * @param \DateTimeZone $object
+     * @inheritdoc
      */
     public function normalize($object, $format = null, array $context = [])
     {
@@ -23,7 +22,7 @@ class DateTimeZoneNormalizer implements NormalizerInterface, DenormalizerInterfa
      */
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && $data instanceof \DateTimeZone;
+        return $data instanceof \DateTimeZone;
     }
 
     /**

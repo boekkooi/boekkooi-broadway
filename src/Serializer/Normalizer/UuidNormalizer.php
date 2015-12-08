@@ -11,9 +11,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class UuidNormalizer implements NormalizerInterface, DenormalizerInterface
 {
     /**
-     * {@inheritdoc}
-     *
-     * @param Uuid $object
+     * @inheritdoc
      */
     public function normalize($object, $format = null, array $context = [])
     {
@@ -25,7 +23,7 @@ class UuidNormalizer implements NormalizerInterface, DenormalizerInterface
      */
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && $data instanceof Uuid;
+        return $data instanceof Uuid;
     }
 
     /**

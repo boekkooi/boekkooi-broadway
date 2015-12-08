@@ -14,9 +14,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class PhoneNumberNormalizer implements NormalizerInterface, DenormalizerInterface
 {
     /**
-     * {@inheritdoc}
-     *
-     * @param PhoneNumber $object
+     * @inheritdoc
      */
     public function normalize($object, $format = null, array $context = [])
     {
@@ -29,7 +27,6 @@ class PhoneNumberNormalizer implements NormalizerInterface, DenormalizerInterfac
     public function supportsNormalization($data, $format = null)
     {
         return
-            is_object($data) &&
             $data instanceof PhoneNumber &&
             PhoneNumberUtil::getInstance()->isValidNumber($data)
         ;
