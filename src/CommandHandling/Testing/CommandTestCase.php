@@ -66,6 +66,26 @@ abstract class CommandTestCase extends \PHPUnit_Framework_TestCase
         self::assertEquals($command, $deserialized);
     }
 
+    public function testAllCommandPropertyConstraintsShouldBeTested()
+    {
+        $testedProperties = array_map(
+            function(array $arr) { return $arr[0]; },
+            $this->providePropertyConstraints()
+        );
+
+        $refl = new \ReflectionClass($this->getCommandClass());
+        $properties = array_map(
+            function(\ReflectionProperty $prop) { return $prop->getName(); },
+            $refl->getProperties()
+        );
+
+        self::assertEquals(
+            [],
+            array_diff($properties, $testedProperties),
+            'All properties should be tested for constraints'
+        );
+    }
+
     /**
      * @dataProvider providePropertyConstraints
      * @param string $property
