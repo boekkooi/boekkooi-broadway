@@ -44,6 +44,7 @@ abstract class CommandTestCase extends \PHPUnit_Framework_TestCase
     {
         return [
             new Normalizer\UuidNormalizer(),
+            new Normalizer\SplFileInfoNormalizer(),
             new Normalizer\DateTimeNormalizer(),
             new Normalizer\DateTimeZoneNormalizer(),
             new Normalizer\JsonSerializableNormalizer(),
