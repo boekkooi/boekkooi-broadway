@@ -3,7 +3,6 @@ namespace Boekkooi\Broadway\CommandHandling\Testing;
 
 use Boekkooi\Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Boekkooi\Broadway\UuidGenerator\UuidGeneratorInterface;
-use Broadway\CommandHandling\Testing\Scenario;
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventHandling\SimpleEventBus;
 use Broadway\EventSourcing\AggregateFactory\PublicConstructorAggregateFactory;
