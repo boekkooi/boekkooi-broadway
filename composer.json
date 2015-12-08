@@ -12,7 +12,7 @@
     "php": ">=5.5",
     "broadway/broadway": "^0.8",
     "league/tactician": "^0.6, >= 0.6.1",
-    "symfony/serializer": "~2.3"
+    "symfony/serializer": "~2.7"
   },
   "require-dev": {
     "symfony/framework-bundle": "~2.3",
@@ -47,6 +47,7 @@
       "tests/Fixtures/Event/EventWithoutNamespace.php"
     ]
   },
+  "prefer-stable": true,
   "minimum-stability": "dev",
   "extra": {
     "branch-alias": {
