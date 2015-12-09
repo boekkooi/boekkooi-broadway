@@ -29,13 +29,12 @@ class Scenario extends BroadwayScenario
     }
 
     /**
-     * @param array $events
-     *
+     * @param \Closure $assert
      * @return Scenario
      */
-    public function thenCheck(\Closure $closure)
+    public function thenCheck(\Closure $assert)
     {
-        $closure($this->eventStore->getEvents(), $this->testCase);
+        $assert($this->eventStore->getEvents(), $this->testCase);
 
         $this->eventStore->clearEvents();
 
