@@ -11,7 +11,7 @@
   "require": {
     "php": ">=5.5",
     "broadway/broadway": "^0.8",
-    "league/tactician": "^0.6, >= 0.6.1",
+    "league/tactician": "^0.6, >= 0.6.1|~1.0",
     "symfony/serializer": "~2.7, >= 2.7.3"
   },
   "require-dev": {
