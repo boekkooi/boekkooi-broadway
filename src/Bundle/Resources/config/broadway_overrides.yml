@@ -5,5 +5,5 @@ services:
   broadway.saga.state.state_manager:
     class: Boekkooi\Broadway\Saga\State\StateManager
     arguments:
-      - @broadway.saga.state.repository
-      - @broadway.uuid.generator
+      - '@broadway.saga.state.repository'
+      - '@broadway.uuid.generator'

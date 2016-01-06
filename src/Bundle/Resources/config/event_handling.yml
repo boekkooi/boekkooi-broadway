@@ -3,9 +3,9 @@ services:
   boekkooi.broadway.event_handler.listener:
     class: Boekkooi\Broadway\EventHandling\HandlerEventListener
     arguments:
-      - boekkooi.broadway.event_handler.event_name_extractor.class_name
-      - boekkooi.broadway.event_handler.locator
-      - boekkooi.broadway.event_handler.method_name_inflector.handle_class_name
+      - '@boekkooi.broadway.event_handler.event_name_extractor.class_name'
+      - '@boekkooi.broadway.event_handler.locator'
+      - '@boekkooi.broadway.event_handler.method_name_inflector.handle_class_name'
     tags:
       - { name: 'broadway.domain.event_listener' }
 
@@ -17,7 +17,7 @@ services:
   boekkooi.broadway.event_handler.locator:
     class: Boekkooi\Broadway\EventHandling\Locator\ContainerHandlerLocator
     arguments:
-      - @service_container
+      - '@service_container'
 
   # The event handler method name inflectors
   boekkooi.broadway.event_handler.method_name_inflector.handle_class_name:
