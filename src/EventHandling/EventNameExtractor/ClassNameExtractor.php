@@ -11,6 +11,9 @@ class ClassNameExtractor implements EventNameExtractor
      */
     public function extract($event)
     {
-        return get_class($event);
+        $className = get_class($event);
+        $ns = strrpos($className, '\\');
+
+        return $ns === false ? $className : substr($className, $ns + 1);
     }
 }

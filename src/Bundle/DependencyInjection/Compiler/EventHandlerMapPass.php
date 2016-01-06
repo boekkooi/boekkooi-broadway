@@ -12,12 +12,12 @@ class EventHandlerMapPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('boekkooi.broadway.event.handler.locator')) {
+        if (!$container->hasDefinition('boekkooi.broadway.event_handler.locator')) {
             return;
         }
 
-        $def = $container->getDefinition('boekkooi.broadway.event.handler.locator');
-        foreach ($container->findTaggedServiceIds('broadway.domain.event_handler') as $id => $attributes) {
+        $def = $container->getDefinition('boekkooi.broadway.event_handler.locator');
+        foreach ($container->findTaggedServiceIds('boekkooi.domain.event_handler') as $id => $attributes) {
             $events = $this->extractEventNames(
                 $container->getDefinition($id)
             );
