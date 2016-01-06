@@ -33,7 +33,7 @@ class CommandHandlerMapPass implements CompilerPassInterface
             $mapping = [];
         }
 
-        foreach ($container->findTaggedServiceIds('boekkooi.broadway.command_handler') as $id => $tags) {
+        foreach ($container->findTaggedServiceIds('boekkooi.domain.command_handler') as $id => $tags) {
             $handlerCommands = $this->extractCommands(
                 $container->getDefinition($id)
             );
@@ -41,7 +41,7 @@ class CommandHandlerMapPass implements CompilerPassInterface
             foreach ($handlerCommands as $commandClass) {
                 if (isset($mapping[$commandClass])) {
                     throw new \Exception(sprintf(
-                        'The boekkooi.broadway.command_handler tag found a duplicate handler for %s both are handled by %s and %s',
+                        'The boekkooi.domain.command_handler tag found a duplicate handler for %s both are handled by %s and %s',
                         $commandClass,
                         $mapping[$commandClass],
                         $id
