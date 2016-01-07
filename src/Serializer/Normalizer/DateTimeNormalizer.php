@@ -32,6 +32,10 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        if ($data === null) {
+            return null;
+        }
+
         $create = ($class === \DateTime::class ? '\DateTime::createFromFormat' : '\DateTimeImmutable::createFromFormat');
 
         return call_user_func($create, static::NORMALIZE_FORMAT, $data);

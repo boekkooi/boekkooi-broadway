@@ -37,6 +37,10 @@ class PhoneNumberNormalizer implements NormalizerInterface, DenormalizerInterfac
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        if ($data === null) {
+            return null;
+        }
+
         return PhoneNumberUtil::getInstance()->parse($data, PhoneNumberUtil::UNKNOWN_REGION);
     }
 

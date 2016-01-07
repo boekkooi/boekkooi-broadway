@@ -32,6 +32,10 @@ class SplFileInfoNormalizer implements NormalizerInterface, DenormalizerInterfac
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        if ($data === null) {
+            return null;
+        }
+
         return new \SplFileInfo($data);
     }
 

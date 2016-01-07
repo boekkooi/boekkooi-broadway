@@ -30,6 +30,10 @@ class DateTimeZoneNormalizer implements NormalizerInterface, DenormalizerInterfa
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        if ($data === null) {
+            return null;
+        }
+
         return new \DateTimeZone($data);
     }
 
