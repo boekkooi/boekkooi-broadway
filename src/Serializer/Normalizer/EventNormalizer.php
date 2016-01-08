@@ -31,10 +31,14 @@ class EventNormalizer extends PropertyNormalizer
      */
     public function getAllowedAttributes($classOrObject, array $context, $attributesAsString = false)
     {
-        $class = new \ReflectionClass(is_object($classOrObject) ? get_class($classOrObject) : $classOrObject);
-        $parameters = $class->getConstructor()->getParameters();
-
         $attributes = [];
+
+        $class = new \ReflectionClass(is_object($classOrObject) ? get_class($classOrObject) : $classOrObject);
+        if ($class->getConstructor() === null) {
+            return $attributes;
+        }
+
+        $parameters = $class->getConstructor()->getParameters();
         foreach ($parameters as $parameter) {
             $attributes[] = $attributesAsString ? $parameter->getName() : new AttributeMetadata($parameter->getName());
         }
@@ -69,17 +73,18 @@ class EventNormalizer extends PropertyNormalizer
     {
         $class = new \ReflectionClass($class);
 
-        if (($constructor = $class->getConstructor()) === null || count($constructor->getParameters()) === 0) {
-            return false;
-        }
+        $propertiesAllowed = (
+            ($constructor = $class->getConstructor()) !== null &&
+            count($constructor->getParameters()) > 0
+        );
 
         // We look for at least one non-static property
         foreach ($class->getProperties() as $property) {
             if (!$property->isStatic()) {
-                return true;
+                return $propertiesAllowed;
             }
         }
 
-        return false;
+        return !$propertiesAllowed;
     }
 }
