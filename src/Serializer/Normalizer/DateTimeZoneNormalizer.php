@@ -44,8 +44,10 @@ class DateTimeZoneNormalizer implements NormalizerInterface, DenormalizerInterfa
     {
         return
             \DateTimeZone::class === $type &&
-            is_string($data) &&
-            in_array($data, \DateTimeZone::listIdentifiers())
+            (
+                $data === null ||
+                (is_string($data) && in_array($data, \DateTimeZone::listIdentifiers()))
+            )
         ;
     }
 }

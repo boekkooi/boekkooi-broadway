@@ -45,8 +45,7 @@ class UuidNormalizer implements NormalizerInterface, DenormalizerInterface
     {
         return
             Uuid::class === $type &&
-            is_string($data) &&
-            Uuid::isValid($data)
+            ($data === null || (is_string($data) && Uuid::isValid($data)))
         ;
     }
 }

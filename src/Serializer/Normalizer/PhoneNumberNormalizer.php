@@ -51,8 +51,10 @@ class PhoneNumberNormalizer implements NormalizerInterface, DenormalizerInterfac
     {
         return
             PhoneNumber::class === $type &&
-            is_string($data) &&
-            PhoneNumberUtil::getInstance()->isPossibleNumber($data, PhoneNumberUtil::UNKNOWN_REGION)
+            (
+                $data === null ||
+                (is_string($data) && PhoneNumberUtil::getInstance()->isPossibleNumber($data, PhoneNumberUtil::UNKNOWN_REGION))
+            )
         ;
     }
 }

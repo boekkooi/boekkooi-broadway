@@ -48,7 +48,7 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface
     {
         return
             (\DateTime::class === $type || \DateTimeImmutable::class === $type) &&
-            is_string($data)
+            ($data === null || is_string($data))
         ;
     }
 }
