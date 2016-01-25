@@ -27,7 +27,8 @@
     "matthiasnoback/symfony-config-test": "~1.3",
     "matthiasnoback/symfony-dependency-injection-test": "^0.7, >= 0.7.4",
 
-    "boekkooi/php-cs-fixer-checker": "^0.1"
+    "boekkooi/php-cs-fixer-checker": "^0.1",
+    "sebastian/money": "~1.6, >=1.6.1"
   },
   "suggest": {
     "boekkooi/php-cs-fixer-checker": "For extra code style checks",
