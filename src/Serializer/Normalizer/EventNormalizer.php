@@ -17,6 +17,10 @@ class EventNormalizer extends PropertyNormalizer
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
+        if ($data === null) {
+            return null;
+        }
+
         $allowedAttributes = $this->getAllowedAttributes($class, $context, true);
         $normalizedData = $this->prepareForDenormalization($data);
 
