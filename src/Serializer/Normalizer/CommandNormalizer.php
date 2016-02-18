@@ -113,6 +113,10 @@ class CommandNormalizer extends GetSetMethodNormalizer
      */
     public function denormalize($data, $class, $format = null, array $context = array())
     {
+        if ($data === null) {
+            return null;
+        }
+
         $allowedAttributes = $this->getAllowedAttributes($class, $context, true);
         $normalizedData = $this->prepareForDenormalization($data);
 
