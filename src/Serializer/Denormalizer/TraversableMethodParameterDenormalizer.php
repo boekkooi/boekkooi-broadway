@@ -47,6 +47,10 @@ class TraversableMethodParameterDenormalizer implements DenormalizerInterface, S
      */
     public function denormalize($data, $type, $format = null, array $context = [])
     {
+        if ($data === null) {
+            return null;
+        }
+
         $denormalizer = $this->denormalizer ?: $this->serializer;
         if (!$denormalizer instanceof DenormalizerInterface) {
             throw new LogicException('Cannot denormalize because injected serializer is not a denormalizer');
@@ -73,7 +77,7 @@ class TraversableMethodParameterDenormalizer implements DenormalizerInterface, S
     public function supportsDenormalization($data, $type, $format = null)
     {
         return
-            (is_array($data) || $data instanceof \Traversable) &&
+            ($data === null || is_array($data) || $data instanceof \Traversable) &&
             isset($this->classMethodParameterMap[$type])
         ;
     }
