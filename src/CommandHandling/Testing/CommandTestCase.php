@@ -58,12 +58,12 @@ abstract class CommandTestCase extends \PHPUnit_Framework_TestCase
      */
     public function testCommandSerialization($command)
     {
-        $serializer = self::getSerializer();
+        $serializer = static::getSerializer();
 
         $serialized = $serializer->serialize($command);
         $deserialized = $serializer->deserialize($serialized);
 
-        self::assertEquals($command, $deserialized);
+        static::assertEquals($command, $deserialized);
     }
 
     public function testAllCommandPropertyConstraintsShouldBeTested()
@@ -79,7 +79,7 @@ abstract class CommandTestCase extends \PHPUnit_Framework_TestCase
             $refl->getProperties()
         );
 
-        self::assertEquals(
+        static::assertEquals(
             [],
             array_diff($properties, $testedProperties),
             'All properties should be tested for constraints'
@@ -93,7 +93,7 @@ abstract class CommandTestCase extends \PHPUnit_Framework_TestCase
      */
     public function testCommandPropertyConstraints($property, array $constraints)
     {
-        self::assertClassPropertyConstraints(
+        static::assertClassPropertyConstraints(
             $this->getCommandClass(),
             $property,
             $constraints
