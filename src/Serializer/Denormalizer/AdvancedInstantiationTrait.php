@@ -89,7 +89,11 @@ trait AdvancedInstantiationTrait
                     }
                 } elseif ($allowed && !$ignored && (isset($data[$key]) || array_key_exists($key, $data))) {
                     /*------ The following differs from the original method: ------*/
-                    $params[] = $this->denormalizeParameter($constructorParameter, $data[$key]);
+                    if ($constructorParameter->isArray() && $data[$key] === null && $constructorParameter->isDefaultValueAvailable()) {
+                        $params[] = $constructorParameter->getDefaultValue();
+                    } else {
+                        $params[] = $this->denormalizeParameter($constructorParameter, $data[$key]);
+                    }
                     /*------ Done ------*/
 
                     // don't run set for a parameter passed to the constructor
